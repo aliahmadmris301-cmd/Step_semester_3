@@ -1,0 +1,24 @@
+import java.util.HashMap;
+public class MostPopularCanteenOrder{
+    static void mostPopular(String[] orders){
+        HashMap<String,Integer> count=new HashMap<>();
+        for(String item:orders){
+            count.put(item,count.getOrDefault(item,0)+1);
+        }
+        String bestItem=orders[0];
+        int maxCount=count.get(bestItem);
+        for(String item:orders){
+            if(count.get(item)>maxCount){
+                bestItem=item;
+                maxCount=count.get(item);
+            }
+        }
+        System.out.println("(\""+bestItem+"\", "+maxCount+")");
+    }
+    public static void main(String[] args){
+        String[] a={"dosa","idli","vada","dosa","idli","dosa","tea"};
+        String[] b={"tea","coffee","coffee","tea"};
+        mostPopular(a);
+        mostPopular(b);
+    }
+}
